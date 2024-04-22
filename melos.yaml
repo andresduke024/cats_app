@@ -1,0 +1,13 @@
+name: cats_app
+
+packages:
+  - apps/**
+  - packages/**
+
+command:
+  bootstrap:
+    environment:
+      sdk: '>=3.3.3 <4.0.0'
+    dependencies:
+      dio: ^5.4.3+1
+      get_it: ^7.7.0
