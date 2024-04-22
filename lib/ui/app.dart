@@ -45,16 +45,15 @@ class App extends StatelessWidget {
       switch (request) {
         case ExternalPushNavigationRequest(route: final route, arguments: final arguments):
           router.add(SimplePushRequest(route: route, arguments: arguments));
-        case ExternalPopNavigationRequest():
-          router.add(PopRequested(type: SimplePopRequest()));
+        case ExternalPopNavigationRequest(route: final route):
+          router.add(PopRequested(type: SimplePopRequest(route: route)));
       }
     }
 
     return {
       BaseRoutes.home.value: (context) => const HomeScreen(),
-      CommonRoutes.catsPackage.value: (context) => MainCatsScreen(onRootActionRequested: (request) {
-            onRootActionRequested(context, request);
-          }),
+      CommonRoutes.catsPackage.value: (context) =>
+          MainCatsScreen(onRootActionRequested: (request) => onRootActionRequested(context, request)),
       CommonRoutes.favoriteCatsPackages.value: (context) => const BaseErrorScreen(),
     };
   }

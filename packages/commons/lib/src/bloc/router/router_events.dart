@@ -21,12 +21,16 @@ final class PopRequested extends RouterEvent {
   PopRequested({required this.type});
 }
 
-sealed class PopRequest {}
-
-final class SimplePopRequest extends PopRequest {
+sealed class PopRequest {
   final String? route;
 
-  SimplePopRequest({this.route});
+  PopRequest({this.route});
 }
 
-final class AppRootPopRequest extends PopRequest {}
+final class SimplePopRequest extends PopRequest {
+  SimplePopRequest({super.route});
+}
+
+final class AppRootPopRequest extends PopRequest {
+  AppRootPopRequest({super.route});
+}

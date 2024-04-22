@@ -34,7 +34,7 @@ final class RouterSimplePopStatus extends RouterPopStatus {
 }
 
 final class RouterAppPopStatus extends RouterPopStatus {
-  RouterAppPopStatus() : super(route: "");
+  RouterAppPopStatus({required super.route});
 }
 
 // State

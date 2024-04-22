@@ -51,18 +51,25 @@ class ModuleEntryButton extends StatelessWidget {
   Widget _buildListTileTitle() {
     return Text(
       _module.description,
+      overflow: TextOverflow.clip,
       style: const TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
     );
   }
 
   Widget _buildListTileSubtitle() {
     return Row(
-      children: <Widget>[
-        Icon(Icons.linear_scale, color: Colors.yellowAccent),
-        Text(
-          " Open to see ${_module.description.toLowerCase()}",
-          style: const TextStyle(color: Colors.white),
-        )
+      children: [
+        const Icon(Icons.linear_scale, color: Colors.yellowAccent),
+        const SizedBox(width: 10),
+        Expanded(
+          child: Text(
+            "Open to see ${_module.description.toLowerCase()}",
+            style: const TextStyle(color: Colors.white),
+            overflow: TextOverflow.ellipsis,
+            maxLines: 2,
+            softWrap: false,
+          ),
+        ),
       ],
     );
   }

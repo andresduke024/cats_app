@@ -32,8 +32,8 @@ class RootScreen<T extends RouterBloc> extends StatelessWidget {
           case RouterAppPushStatus(route: final route, arguments: final arguments):
             final request = ExternalPushNavigationRequest(route: route, arguments: arguments);
             _onRootActionRequested(request);
-          case RouterAppPopStatus():
-            final request = ExternalPopNavigationRequest();
+          case RouterAppPopStatus(route: final route):
+            final request = ExternalPopNavigationRequest(route: route);
             _onRootActionRequested(request);
         }
       },
