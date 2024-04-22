@@ -19,7 +19,7 @@ class CatsListScreen extends StatelessWidget {
       value: BlocProvider.of<CatsListsBloc>(context),
       child: CatsScaffold(
         onBackPressed: () {
-          final event = PopRequested(type: AppRootPopRequest());
+          final event = AppRootPopRequest();
           context.read<CatsRouterBloc>().add(event);
         },
         body: SafeArea(

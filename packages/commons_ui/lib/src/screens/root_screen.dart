@@ -1,10 +1,6 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-
-import '../../bloc/router/router_bloc.dart';
-import '../../bloc/router/router_state.dart';
 import 'package:flutter/material.dart';
-
-import '../../models/navigation/external_navigation_request.dart';
+import 'package:commons/commons.dart';
 
 class RootScreen<T extends RouterBloc> extends StatelessWidget {
   final Function(ExternalNavigationRequest) _onRootActionRequested;

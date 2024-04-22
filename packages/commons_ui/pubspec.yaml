@@ -12,6 +12,9 @@ dependencies:
   flutter:
     sdk: flutter
 
+  # External packages
+  flutter_bloc: ^8.1.5
+
   # Local packages
   commons: 
     path: ../commons

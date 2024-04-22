@@ -29,7 +29,7 @@ class CommonErrorScreen extends StatelessWidget {
   Widget _buildExitButton() {
     return InkWell(
       onTap: () {
-        final event = PopRequested(type: SimplePopRequest());
+        final event = SimplePopRequest();
         onBackButtonPressed(event);
       },
       child: Container(

@@ -15,22 +15,16 @@ final class SimplePushRequest extends PushRequested {
   SimplePushRequest({required super.route, super.arguments});
 }
 
-final class PopRequested extends RouterEvent {
-  final PopRequest type;
-
-  PopRequested({required this.type});
-}
-
-sealed class PopRequest {
+sealed class PopRequested extends RouterEvent {
   final String? route;
 
-  PopRequest({this.route});
+  PopRequested({this.route});
 }
 
-final class SimplePopRequest extends PopRequest {
+final class SimplePopRequest extends PopRequested {
   SimplePopRequest({super.route});
 }
 
-final class AppRootPopRequest extends PopRequest {
+final class AppRootPopRequest extends PopRequested {
   AppRootPopRequest({super.route});
 }

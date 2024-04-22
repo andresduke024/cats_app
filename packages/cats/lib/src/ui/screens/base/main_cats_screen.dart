@@ -8,15 +8,14 @@ import 'package:cats/src/ui/screens/cat_details_screen.dart';
 import 'package:cats/src/ui/screens/cats_list_screen.dart';
 import 'package:cats/src/ui/screens/error_cats_screen.dart';
 import 'package:commons/commons.dart';
+import 'package:commons_ui/commons_ui.dart';
 
 import '../../../utils/cats_package_routes.dart';
 
-class MainCatsScreen extends StatelessWidget {
-  final Function(ExternalNavigationRequest) onRootActionRequested;
-
-  const MainCatsScreen({
+class MainCatsScreen extends MainPackageScreen {
+  const MainCatsScreen(
+    super.onRootActionRequested, {
     super.key,
-    required this.onRootActionRequested,
   });
 
   @override

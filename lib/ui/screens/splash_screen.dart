@@ -1,5 +1,4 @@
 import 'package:cats_app/utils/base_resources.dart';
-import 'package:cats_app/utils/base_routes.dart';
 import 'package:commons/commons.dart';
 import 'package:cats_app/bloc/splash/splash_bloc.dart';
 import 'package:cats_app/bloc/splash/splash_states.dart';
@@ -32,7 +31,7 @@ class _SplashScreenState extends State<SplashScreen> {
     if (state.status != SplashStatus.success) return;
 
     final event = SimplePushRequest(
-      route: BaseRoutes.home.value,
+      route: CommonRoutes.home.value,
     );
     context.read<BaseRouterBloc>().add(event);
   }

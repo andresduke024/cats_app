@@ -25,9 +25,9 @@ class RouterBloc extends Bloc<RouterEvent, RouterState> {
   void onPopRequested(PopRequested event, Emitter<RouterState> emit) {
     RouterPopStatus status;
 
-    final route = event.type.route ?? "";
+    final route = event.route ?? "";
 
-    switch (event.type) {
+    switch (event) {
       case SimplePopRequest():
         status = RouterSimplePopStatus(route: route);
       case AppRootPopRequest():

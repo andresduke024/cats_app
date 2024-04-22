@@ -2,7 +2,6 @@ import 'package:cats/cats.dart';
 import 'package:cats_app/bloc/home/home_bloc.dart';
 import 'package:cats_app/ui/screens/base_error_screen.dart';
 import 'package:cats_app/ui/screens/home_screen.dart';
-import 'package:cats_app/utils/base_routes.dart';
 import 'package:commons/commons.dart';
 import 'package:cats_app/bloc/router/base_router_block.dart';
 import 'package:cats_app/ui/screens/splash_screen.dart';
@@ -24,7 +23,7 @@ class App extends StatelessWidget {
         BlocProvider(create: (_) => HomeBloc()),
       ],
       child: MaterialApp(
-        title: 'Flutter Demo',
+        title: 'Cats app',
         debugShowCheckedModeBanner: false,
         theme: ThemeData(
           colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
@@ -46,14 +45,13 @@ class App extends StatelessWidget {
         case ExternalPushNavigationRequest(route: final route, arguments: final arguments):
           router.add(SimplePushRequest(route: route, arguments: arguments));
         case ExternalPopNavigationRequest(route: final route):
-          router.add(PopRequested(type: SimplePopRequest(route: route)));
+          router.add(SimplePopRequest(route: route));
       }
     }
 
     return {
-      BaseRoutes.home.value: (context) => const HomeScreen(),
-      CommonRoutes.catsPackage.value: (context) =>
-          MainCatsScreen(onRootActionRequested: (request) => onRootActionRequested(context, request)),
+      CommonRoutes.home.value: (context) => const HomeScreen(),
+      CommonRoutes.catsPackage.value: (context) => MainCatsScreen((request) => onRootActionRequested(context, request)),
       CommonRoutes.favoriteCatsPackages.value: (context) => const BaseErrorScreen(),
     };
   }

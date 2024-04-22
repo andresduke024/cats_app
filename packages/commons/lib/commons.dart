@@ -22,17 +22,22 @@ export 'src/bloc/router/router_events.dart'
         PushRequested,
         AppRootPushRequest,
         SimplePushRequest,
-        PopRequest,
         AppRootPopRequest,
         SimplePopRequest;
 
-export 'src/bloc/router/router_state.dart' show RouterState, RouterStatus, RouterPopStatus, RouterPushStatus;
+export 'src/bloc/router/router_state.dart'
+    show
+        InitialRouterStatus,
+        RouterState,
+        RouterStatus,
+        RouterPopStatus,
+        RouterSimplePopStatus,
+        RouterAppPopStatus,
+        RouterAppPushStatus,
+        RouterSimplePushStatus,
+        RouterPushStatus;
 
 // Utils
 export './src/utils/common_routes.dart' show CommonRoutes;
 
 export './src/utils/common_utils.dart' show CommonUtils;
-
-// UI
-export 'src/ui/screens/root_screen.dart' show RootScreen;
-export 'src/ui/components/nested_navigator.dart' show NestedNavigator;

@@ -33,7 +33,7 @@ final class CatsScaffold extends StatelessWidget {
           return;
         }
 
-        final event = PopRequested(type: SimplePopRequest());
+        final event = SimplePopRequest();
         context.read<CatsRouterBloc>().add(event);
       },
     );
