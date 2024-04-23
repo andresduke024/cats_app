@@ -1,3 +1,6 @@
+import 'package:cats/src/use-cases/get_cat_details_use_case.dart';
+import 'package:cats/src/use-cases/impl/get_cat_details_use_case_impl.dart';
+
 import 'cats_package_injector.dart';
 import '../models/mappers/cat_mapper.dart';
 import '../models/responses/cat_breed_response.dart';
@@ -23,5 +26,6 @@ class CatsPackageBuilder implements BasePackageBuilder {
 
     // Use Cases
     injector.registerFactory<GetCatsUseCase>(() => GetCatsUseCaseImpl());
+    injector.registerFactory<GetCatDetailsUseCase>(() => GetCatDetailsUseCaseImpl());
   }
 }

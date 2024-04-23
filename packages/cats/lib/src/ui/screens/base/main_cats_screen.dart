@@ -1,3 +1,4 @@
+import 'package:cats/src/bloc/cat_details/cat_details_bloc.dart';
 import 'package:cats/src/bloc/cats/cats_list_bloc.dart';
 import 'package:cats/src/bloc/router/cats_router_bloc.dart';
 import 'package:flutter/material.dart';

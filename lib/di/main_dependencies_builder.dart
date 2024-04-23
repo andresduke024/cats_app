@@ -16,7 +16,7 @@ class MainDependenciesBuilder {
     Map configData = jsonDecode(confidentContent);
 
     EnvironmentValues environment = EnvironmentValues(data: configData);
-    _injector.registerSingleton<EnvironmentValuesProvider>(EnvironmentValuesProvider(environment: environment));
+    _injector.registerSingleton<EnvironmentValuesProvider>(EnvironmentValuesProviderImpl(environment: environment));
 
     Iterable<BasePackageBuilder> builders = [
       CatsPackageBuilder(),

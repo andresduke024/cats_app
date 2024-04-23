@@ -10,7 +10,5 @@ class GetCatsUseCaseImpl implements GetCatsUseCase {
   GetCatsUseCaseImpl() : _repository = CatsPackageInjector.instance.get();
 
   @override
-  Future<List<Cat>> get() async {
-    return await _repository.get();
-  }
+  Future<List<Cat>> invoke() async => await _repository.getList();
 }

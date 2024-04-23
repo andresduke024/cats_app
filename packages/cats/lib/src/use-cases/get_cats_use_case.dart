@@ -1,5 +1,5 @@
 import '../models/cat.dart';
 
 abstract class GetCatsUseCase {
-  Future<List<Cat>> get();
+  Future<List<Cat>> invoke();
 }

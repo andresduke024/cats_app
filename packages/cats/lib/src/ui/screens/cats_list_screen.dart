@@ -3,6 +3,7 @@ import 'package:cats/src/bloc/cats/cats_list_states.dart';
 import 'package:cats/src/bloc/router/cats_router_bloc.dart';
 import 'package:cats/src/ui/components/cat_list_tile.dart';
 import 'package:cats/src/ui/components/cats_scaffold.dart';
+import 'package:cats/src/ui/screens/error_cats_screen.dart';
 import 'package:cats/src/utils/cats_package_routes.dart';
 import 'package:commons/commons.dart';
 import 'package:flutter/material.dart';
@@ -45,7 +46,7 @@ class CatsListScreen extends StatelessWidget {
       case CatsListStatus.success:
         return _buildForLoadedState(context, state.data);
       case CatsListStatus.failure:
-        return const Text("Error");
+        return _buildForErrorState(context);
     }
   }
 
@@ -65,7 +66,7 @@ class CatsListScreen extends StatelessWidget {
           onTap: (cat) {
             final event = SimplePushRequest(
               route: CatsPackageRoutes.detailScreen.value,
-              arguments: cat,
+              arguments: cat.copyWith(),
             );
             context.read<CatsRouterBloc>().add(event);
           },
@@ -73,5 +74,12 @@ class CatsListScreen extends StatelessWidget {
         );
       },
     );
+  }
+
+  Widget _buildForErrorState(BuildContext context) {
+    return ErrorCatsScreen(onBackButtonPressed: () {
+      final event = AppRootPopRequest();
+      context.read<CatsRouterBloc>().add(event);
+    });
   }
 }

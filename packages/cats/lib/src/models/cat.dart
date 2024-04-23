@@ -1,21 +1,23 @@
 class Cat {
   final String id;
+  final int weightScale;
   final String breedName;
   final String origin;
   final int affectionLevel;
   final int intelligence;
-  final String imageUrl;
+  final String imageId;
   final String description;
   final String adaptability;
   final String lifeSpan;
 
   const Cat({
     required this.id,
+    required this.weightScale,
     required this.breedName,
     required this.origin,
     required this.affectionLevel,
     required this.intelligence,
-    required this.imageUrl,
+    required this.imageId,
     required this.description,
     required this.adaptability,
     required this.lifeSpan,
@@ -23,22 +25,24 @@ class Cat {
 
   Cat copyWith({
     String? id,
+    int? weightScale,
     String? breedName,
     String? origin,
     int? affectionLevel,
     int? intelligence,
-    String? imageUrl,
+    String? imageId,
     String? description,
     String? adaptability,
     String? lifeSpan,
   }) {
     return Cat(
       id: id ?? this.id,
+      weightScale: weightScale ?? this.weightScale,
       breedName: breedName ?? this.breedName,
       origin: origin ?? this.origin,
       affectionLevel: affectionLevel ?? this.affectionLevel,
       intelligence: intelligence ?? this.intelligence,
-      imageUrl: imageUrl ?? this.imageUrl,
+      imageId: imageId ?? this.imageId,
       description: description ?? this.description,
       adaptability: adaptability ?? this.adaptability,
       lifeSpan: lifeSpan ?? this.lifeSpan,
@@ -54,7 +58,7 @@ class Cat {
         other.origin == origin &&
         other.affectionLevel == affectionLevel &&
         other.intelligence == intelligence &&
-        other.imageUrl == imageUrl &&
+        other.imageId == imageId &&
         other.description == description &&
         other.adaptability == adaptability &&
         other.lifeSpan == lifeSpan;
@@ -67,7 +71,7 @@ class Cat {
         origin.hashCode ^
         affectionLevel.hashCode ^
         intelligence.hashCode ^
-        imageUrl.hashCode ^
+        imageId.hashCode ^
         description.hashCode ^
         adaptability.hashCode ^
         lifeSpan.hashCode;

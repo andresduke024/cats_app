@@ -18,7 +18,7 @@ class CatsListsBloc extends Bloc<CatsListEvent, CatsListState> {
       await _onLoadCatsEvent(event: event, emit: emit);
     });
 
-    add(LoadCatsEvent());
+    add(const LoadCatsEvent());
   }
 
   Future _onLoadCatsEvent({
@@ -27,7 +27,7 @@ class CatsListsBloc extends Bloc<CatsListEvent, CatsListState> {
   }) async {
     try {
       emit(const CatsListState.loading());
-      final cats = await _getCatsUseCase.get();
+      final cats = await _getCatsUseCase.invoke();
 
       emit(CatsListState.success(cats));
     } catch (_) {

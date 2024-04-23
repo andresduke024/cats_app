@@ -4,13 +4,16 @@ library commons;
 export 'src/base/base_package_builder.dart' show BasePackageBuilder;
 
 export 'src/base/environment/environment_values_provider.dart' show EnvironmentValuesProvider;
+export 'src/base/environment/impl/environment_values_provider_impl.dart' show EnvironmentValuesProviderImpl;
 export 'src/base/environment/environment_values.dart' show EnvironmentValues;
+export 'src/base/environment/environment_keys.dart' show EnvironmentKeys;
 
 // Models
 export 'src/models/navigation/external_navigation_request.dart'
     show ExternalNavigationRequest, ExternalPopNavigationRequest, ExternalPushNavigationRequest;
 
 // Repository
+export 'src/repository/base_repository.dart' show BaseRepository;
 export 'src/repository/mappers/repository_mapper.dart' show ResponseMapper, RequestMapper, BaseMapper;
 
 // BLoC

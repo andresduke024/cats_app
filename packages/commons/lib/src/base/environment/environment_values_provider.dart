@@ -1,16 +1,7 @@
-import 'environment_values.dart';
-import '../../errors/environment_exception.dart';
+import 'environment_keys.dart';
 
-class EnvironmentValuesProvider {
-  final EnvironmentValues _environment;
+abstract class EnvironmentValuesProvider {
+  const EnvironmentValuesProvider();
 
-  const EnvironmentValuesProvider({required EnvironmentValues environment}) : _environment = environment;
-
-  String get(String key) {
-    String result = _environment.data[key] ?? "";
-
-    if (result.isEmpty) throw EnvironmentException();
-
-    return result;
-  }
+  String get(EnvironmentKeys key);
 }

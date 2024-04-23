@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
 import '../../models/cat.dart';
+import 'cat_image.dart';
+import 'cat_origin_text.dart';
 
 class CatListTile extends StatelessWidget {
   final Cat _data;
@@ -16,12 +18,52 @@ class CatListTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListTile(
+      contentPadding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 10.0),
+      leading: _buildListTileLeading(),
+      title: _buildListTileTitle(),
+      subtitle: _buildListTileSubtitle(context),
+      trailing: _buildListTileTrailing(context),
       onTap: () {
         _onTap(_data);
       },
-      leading: Text(
-        _data.breedName,
+    );
+  }
+
+  Widget _buildListTileLeading() {
+    return Container(
+      padding: const EdgeInsets.only(right: 12.0),
+      decoration: const BoxDecoration(
+        border: Border(
+          right: BorderSide(width: 1.0, color: Colors.white24),
+        ),
       ),
+      child: CatImage(
+        cat: _data,
+      ),
+    );
+  }
+
+  Widget _buildListTileTitle() {
+    return Text(
+      _data.breedName,
+      overflow: TextOverflow.clip,
+      style: const TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
+    );
+  }
+
+  Widget _buildListTileSubtitle(BuildContext context) {
+    return Row(
+      children: [
+        CatOriginText(origin: _data.origin),
+      ],
+    );
+  }
+
+  Widget _buildListTileTrailing(BuildContext context) {
+    return Icon(
+      Icons.keyboard_arrow_right,
+      color: Theme.of(context).primaryColor,
+      size: 30.0,
     );
   }
 }
