@@ -1,5 +1,3 @@
-import 'dart:convert';
-
 import 'package:cats/src/base/cats_package_injector.dart';
 import 'package:cats/src/models/responses/cat_breed_response.dart';
 import 'package:cats/src/utils/cats_endpoints.dart';
