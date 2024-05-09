@@ -1,8 +1,5 @@
-import '../models/cat.dart';
-import '../models/cat_detail.dart';
+import 'package:commons/commons.dart';
 
 abstract class CatsRepository {
   Future<List<Cat>> getList();
-
-  Future<CatDetail> getDetails({required Cat data});
 }

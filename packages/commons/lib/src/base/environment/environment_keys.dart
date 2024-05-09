@@ -1,6 +1,7 @@
 enum EnvironmentKeys {
   api(value: "apiUrl"),
-  apiKey(value: "apiKey");
+  apiKey(value: "apiKey"),
+  favoritesLocalDB(value: "favoritesLocalDB");
 
   final String value;
 

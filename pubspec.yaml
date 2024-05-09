@@ -41,6 +41,8 @@ dependencies:
   dio: ^5.4.3+1
   get_it: ^7.7.0
   flutter_bloc: ^8.1.5
+  hive: ^2.2.3
+  hive_flutter: ^1.1.0
 
   # Local packages
   commons:
@@ -49,6 +51,10 @@ dependencies:
     path: packages/commons_ui
   cats:
     path: packages/cats
+  cat_details:
+    path: packages/cat_details
+  cats_favorites:
+    path: packages/cats_favorites
 
 dev_dependencies:
   flutter_test:

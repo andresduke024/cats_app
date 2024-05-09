@@ -12,6 +12,12 @@ enum Module {
     description: "Favorite Cats list",
     route: CommonRoutes.favoriteCatsPackages,
     relatedImage: BaseResources.favoritesCatsPackageImage,
+  ),
+
+  adoptCats(
+    description: "Adopt Cats",
+    route: CommonRoutes.adoptCatsPackage,
+    relatedImage: BaseResources.adoptCatsPackageImage,
   );
 
   final String description;

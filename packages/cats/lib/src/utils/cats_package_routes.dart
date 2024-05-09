@@ -1,7 +1,6 @@
 enum CatsPackageRoutes {
   undefined(value: ""),
-  listScreen(value: "cats-lists-screen"),
-  detailScreen(value: "cats-details-screen");
+  listScreen(value: "cats-lists-screen");
 
   final String value;
 

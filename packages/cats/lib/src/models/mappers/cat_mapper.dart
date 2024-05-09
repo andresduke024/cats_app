@@ -1,5 +1,4 @@
 import 'package:commons/commons.dart';
-import 'package:cats/src/models/cat.dart';
 import 'package:cats/src/models/responses/cat_breed_response.dart';
 
 class CatMapper implements ResponseMapper<Cat, CatBreedResponse> {

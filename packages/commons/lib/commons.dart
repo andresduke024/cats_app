@@ -12,6 +12,8 @@ export 'src/base/environment/environment_keys.dart' show EnvironmentKeys;
 export 'src/models/navigation/external_navigation_request.dart'
     show ExternalNavigationRequest, ExternalPopNavigationRequest, ExternalPushNavigationRequest;
 
+export 'src/models/cats.dart' show Cat;
+
 // Repository
 export 'src/repository/base_repository.dart' show BaseRepository;
 export 'src/repository/mappers/repository_mapper.dart' show ResponseMapper, RequestMapper, BaseMapper;
@@ -40,7 +42,16 @@ export 'src/bloc/router/router_state.dart'
         RouterSimplePushStatus,
         RouterPushStatus;
 
+// Use cases
+export 'src/use_cases/favorites/get_favorite_cat_use_case.dart' show GetFavoritesCatUseCase;
+export 'src/use_cases/favorites/add_favorite_cat_use_case.dart' show AddFavoriteCatUseCase;
+export 'src/use_cases/favorites/delete_favorite_cat_use_case.dart' show DeleteFavoriteCatUseCase;
+
 // Utils
 export './src/utils/common_routes.dart' show CommonRoutes;
 
 export './src/utils/common_utils.dart' show CommonUtils;
+
+export './src/errors/environment_exception.dart' show EnvironmentException;
+
+export './src/utils/route_generator.dart' show RouteGenerator;

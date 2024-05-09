@@ -1,14 +1,14 @@
-import 'package:cats/src/base/cats_package_injector.dart';
 import 'package:cats/src/bloc/cats/cats_list_states.dart';
 import 'package:cats/src/bloc/cats/cats_lists_events.dart';
 import 'package:cats/src/use-cases/get_cats_use_case.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:get_it/get_it.dart';
 
 class CatsListsBloc extends Bloc<CatsListEvent, CatsListState> {
   final GetCatsUseCase _getCatsUseCase;
 
   CatsListsBloc()
-      : _getCatsUseCase = CatsPackageInjector.instance.get(),
+      : _getCatsUseCase = GetIt.I.get(),
         super(const CatsListState.initial()) {
     _setUpEventsListeners();
   }

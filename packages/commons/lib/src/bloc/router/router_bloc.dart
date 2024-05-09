@@ -4,7 +4,7 @@ import 'router_events.dart';
 import 'router_state.dart';
 
 class RouterBloc extends Bloc<RouterEvent, RouterState> {
-  RouterBloc({required String rootPath}) : super(RouterState.initial()) {
+  RouterBloc() : super(RouterState.initial()) {
     on<PushRequested>(onPushRequested);
     on<PopRequested>(onPopRequested);
   }

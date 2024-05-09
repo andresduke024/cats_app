@@ -3,12 +3,12 @@ import 'package:flutter/material.dart';
 class NestedNavigator extends StatelessWidget {
   final Widget initialScreen;
 
-  final Route<dynamic> Function(RouteSettings settings) onGenerateRoute;
+  final RouteFactory? onGenerateRoute;
 
   const NestedNavigator({
     super.key,
     required this.initialScreen,
-    required this.onGenerateRoute,
+    this.onGenerateRoute,
   });
 
   GlobalKey<NavigatorState> _getNavigatorKey() {

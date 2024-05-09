@@ -1,4 +1,4 @@
-import '../../models/cat.dart';
+import 'package:commons/commons.dart';
 
 enum CatsListStatus {
   initial,

@@ -9,7 +9,7 @@ class BaseRepository {
   final Dio _dio;
 
   BaseRepository()
-      : _environmentProvider = GetIt.instance.get<EnvironmentValuesProvider>(),
+      : _environmentProvider = GetIt.I.get<EnvironmentValuesProvider>(),
         _dio = Dio();
 
   Map<String, dynamic> _buildHeaders() {

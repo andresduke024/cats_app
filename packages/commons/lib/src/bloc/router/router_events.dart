@@ -1,4 +1,6 @@
-sealed class RouterEvent {}
+sealed class RouterEvent {
+  const RouterEvent();
+}
 
 sealed class PushRequested extends RouterEvent {
   final String route;
@@ -18,13 +20,13 @@ final class SimplePushRequest extends PushRequested {
 sealed class PopRequested extends RouterEvent {
   final String? route;
 
-  PopRequested({this.route});
+  const PopRequested({this.route});
 }
 
 final class SimplePopRequest extends PopRequested {
-  SimplePopRequest({super.route});
+  const SimplePopRequest({super.route});
 }
 
 final class AppRootPopRequest extends PopRequested {
-  AppRootPopRequest({super.route});
+  const AppRootPopRequest({super.route});
 }

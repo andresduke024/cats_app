@@ -1,4 +1,5 @@
 {
   "apiUrl": "https://api.thecatapi.com/v1",
-  "apiKey": "live_lyeqD1rf7e8dt5g0iOUs5dxNEe1j06hAjoGqJkBmP57ucBM8bEs5ZlUcFASBIG1a"
+  "apiKey": "live_lyeqD1rf7e8dt5g0iOUs5dxNEe1j06hAjoGqJkBmP57ucBM8bEs5ZlUcFASBIG1a",
+  "favoritesLocalDB": "localDb"
 }

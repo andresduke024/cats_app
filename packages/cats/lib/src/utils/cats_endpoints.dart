@@ -1,6 +1,5 @@
 enum CatsEndpoints {
-  breeds(value: "/breeds"),
-  imageById(value: "/images");
+  breeds(value: "/breeds");
 
   final String value;
 
