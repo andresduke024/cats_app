@@ -4,19 +4,24 @@ import 'router_events.dart';
 import 'router_state.dart';
 
 class RouterBloc extends Bloc<RouterEvent, RouterState> {
+  List<String> get routes => [];
+
   RouterBloc() : super(RouterState.initial()) {
-    on<PushRequested>(onPushRequested);
+    on<PushRequest>(onPushRequested);
     on<PopRequested>(onPopRequested);
   }
 
-  void onPushRequested(PushRequested event, Emitter<RouterState> emit) {
-    RouterPushStatus status;
+  void onPushRequested(PushRequest event, Emitter<RouterState> emit) {
+    RouterPushStatus status = RouterAppPushStatus(
+      route: event.route,
+      arguments: event.arguments,
+    );
 
-    switch (event) {
-      case AppRootPushRequest(route: final route, arguments: final arguments):
-        status = RouterAppPushStatus(route: route, arguments: arguments);
-      case SimplePushRequest(route: final route, arguments: final arguments):
-        status = RouterSimplePushStatus(route: route, arguments: arguments);
+    if (routes.contains(event.route)) {
+      status = RouterSimplePushStatus(
+        route: event.route,
+        arguments: event.arguments,
+      );
     }
 
     emit(RouterState.push(status: status));

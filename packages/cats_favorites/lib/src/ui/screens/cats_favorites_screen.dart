@@ -35,7 +35,7 @@ class CatsFavoritesScreen extends StatelessWidget {
       return;
     }
 
-    final event = AppRootPushRequest(route: state.route, arguments: state.arguments);
+    final event = PushRequest(route: state.route, arguments: state.arguments);
     context.read<CatFavoritesRouterBloc>().add(event);
   }
 

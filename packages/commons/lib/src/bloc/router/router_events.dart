@@ -2,19 +2,11 @@ sealed class RouterEvent {
   const RouterEvent();
 }
 
-sealed class PushRequested extends RouterEvent {
+final class PushRequest extends RouterEvent {
   final String route;
   final Object? arguments;
 
-  PushRequested({required this.route, this.arguments});
-}
-
-final class AppRootPushRequest extends PushRequested {
-  AppRootPushRequest({required super.route, super.arguments});
-}
-
-final class SimplePushRequest extends PushRequested {
-  SimplePushRequest({required super.route, super.arguments});
+  PushRequest({required this.route, this.arguments});
 }
 
 sealed class PopRequested extends RouterEvent {

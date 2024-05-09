@@ -21,14 +21,7 @@ export 'src/repository/mappers/repository_mapper.dart' show ResponseMapper, Requ
 // BLoC
 export 'src/bloc/router/router_bloc.dart' show RouterBloc;
 export 'src/bloc/router/router_events.dart'
-    show
-        RouterEvent,
-        PopRequested,
-        PushRequested,
-        AppRootPushRequest,
-        SimplePushRequest,
-        AppRootPopRequest,
-        SimplePopRequest;
+    show RouterEvent, PopRequested, PushRequest, AppRootPopRequest, SimplePopRequest;
 
 export 'src/bloc/router/router_state.dart'
     show

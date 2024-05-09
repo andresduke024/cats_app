@@ -52,7 +52,7 @@ class CatsListScreen extends StatelessWidget {
       itemBuilder: (builderContext, index) {
         return CatListTile(
           onTap: (cat) {
-            final event = AppRootPushRequest(
+            final event = PushRequest(
               route: CommonRoutes.catDetailsPackage.value,
               arguments: cat.copyWith(),
             );

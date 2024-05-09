@@ -30,9 +30,7 @@ class _SplashScreenState extends State<SplashScreen> {
   void _listener(BuildContext context, SplashState state) {
     if (state.status != SplashStatus.success) return;
 
-    final event = SimplePushRequest(
-      route: CommonRoutes.home.value,
-    );
+    final event = PushRequest(route: CommonRoutes.home.value);
     context.read<BaseRouterBloc>().add(event);
   }
 

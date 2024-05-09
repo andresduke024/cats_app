@@ -30,7 +30,7 @@ class HomeScreen extends StatelessWidget {
   void _listener(BuildContext context, HomeState state) {
     if (state is! HomeNavigation) return;
 
-    final event = SimplePushRequest(route: state.route);
+    final event = PushRequest(route: state.route);
     context.read<BaseRouterBloc>().add(event);
   }
 

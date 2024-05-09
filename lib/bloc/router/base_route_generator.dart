@@ -22,7 +22,7 @@ final class BaseRouteGenerator implements RouteGenerator {
 
     switch (request) {
       case ExternalPushNavigationRequest(route: final route, arguments: final arguments):
-        router.add(SimplePushRequest(route: route, arguments: arguments));
+        router.add(PushRequest(route: route, arguments: arguments));
       case ExternalPopNavigationRequest(route: final route):
         router.add(SimplePopRequest(route: route));
     }
