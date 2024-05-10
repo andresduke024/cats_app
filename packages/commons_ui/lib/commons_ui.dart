@@ -22,6 +22,10 @@ export './src/components/ellipsis_text.dart' show EllipsisText;
 
 export './src/components/cat_origin_text.dart' show CatOriginText;
 
+export './src/components/exit_button.dart' show ExitButton;
+
+export './src/components/generic_asset_image.dart' show GenericAssetImage;
+
 // Screens
 
 export './src/screens/common_error_screen.dart' show CommonErrorScreen;
@@ -29,3 +33,7 @@ export './src/screens/common_error_screen.dart' show CommonErrorScreen;
 export './src/screens/generic_error_screen.dart' show GenericErrorScreen;
 
 export './src/screens/generic_main_screen.dart' show GenericMainScreen;
+
+// Utils
+
+export './src/utils/common_resources.dart' show CommonResources;

@@ -6,7 +6,8 @@ enum CommonResources {
   cat5(name: "cat5.png"),
   cat6(name: "cat6.png"),
   cat7(name: "cat7.png"),
-  error(name: "error_illustration.png");
+  error(name: "error_illustration.png"),
+  empty(name: "empty_illustration.png");
 
   final String value;
 

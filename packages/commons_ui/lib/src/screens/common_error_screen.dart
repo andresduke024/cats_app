@@ -1,5 +1,6 @@
 import 'package:commons/commons.dart';
 import 'package:commons_ui/src/components/exit_button.dart';
+import 'package:commons_ui/src/components/generic_asset_image.dart';
 import 'package:commons_ui/src/utils/common_resources.dart';
 import 'package:flutter/material.dart';
 
@@ -17,8 +18,6 @@ class CommonErrorScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final size = MediaQuery.of(context).size;
-
     return Scaffold(
       backgroundColor: Colors.white,
       body: SafeArea(
@@ -29,14 +28,14 @@ class CommonErrorScreen extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.center,
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Image(
-                  image: AssetImage(CommonResources.error.value),
-                  width: size.width,
-                  fit: BoxFit.contain,
+                GenericAssetImage(
+                  resourceName: CommonResources.error.value,
                 ),
                 ExitButton(
-                  routerActionHandlerType: routerActionHandlerType,
-                  onTap: onBackButtonPressed,
+                  onTap: () {
+                    final event = PopRequest(type: routerActionHandlerType);
+                    onBackButtonPressed(event);
+                  },
                 ),
                 child ?? const SizedBox()
               ],

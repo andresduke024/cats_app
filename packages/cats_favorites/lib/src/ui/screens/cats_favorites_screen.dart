@@ -1,6 +1,7 @@
 import 'package:cats_favorites/src/bloc/cats_favorites/cats_favorites_events.dart';
 import 'package:cats_favorites/src/bloc/cats_favorites/cats_favorites_states.dart';
 import 'package:cats_favorites/src/bloc/router/cat_favorites_router_bloc.dart';
+import 'package:cats_favorites/src/ui/components/empty_results.dart';
 import 'package:cats_favorites/src/ui/components/favorite_card.dart';
 import 'package:cats_favorites/src/utils/constants.dart';
 import 'package:commons/commons.dart';
@@ -36,12 +37,8 @@ class CatsFavoritesScreen extends StatelessWidget {
       return;
     }
 
-    onGoBack() {
-      const event = LoadCatsFavorites();
-      context.read<CatsFavoritesBloc>().add(event);
-    }
-
-    final event = PushRequest(route: state.route, arguments: state.arguments, onGoBack: onGoBack);
+    final event =
+        PushRequest(route: state.route, arguments: state.arguments, onGoBack: () => _onNavigationGoBack(context));
     context.read<CatFavoritesRouterBloc>().add(event);
   }
 
@@ -65,6 +62,10 @@ class CatsFavoritesScreen extends StatelessWidget {
   }
 
   Widget _buildForSuccessStatus(BuildContext context, List<Cat> data) {
+    if (data.isEmpty) {
+      return EmptyResults(onNavigationGoBack: () => _onNavigationGoBack(context));
+    }
+
     const double spacing = 10;
 
     return GridView.count(
@@ -76,5 +77,10 @@ class CatsFavoritesScreen extends StatelessWidget {
         return FavoriteCard(data: e);
       }).toList(),
     );
+  }
+
+  void _onNavigationGoBack(BuildContext context) {
+    const event = LoadCatsFavorites();
+    context.read<CatsFavoritesBloc>().add(event);
   }
 }
