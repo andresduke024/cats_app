@@ -17,7 +17,7 @@ class CatsListScreen extends StatelessWidget {
     return BlocProvider.value(
       value: BlocProvider.of<CatsListsBloc>(context),
       child: GenericScaffold<CatsRouterBloc>(
-        origin: NavigationPoint.root,
+        routerActionHandlerTypeOnBack: RouterActionHandlerType.external,
         title: Constants.navigationHeaderName,
         body: BlocBuilder<CatsListsBloc, CatsListState>(
           buildWhen: _buildWhen,
@@ -41,7 +41,7 @@ class CatsListScreen extends StatelessWidget {
         return _buildForLoadedState(context, state.data);
       case CatsListStatus.failure:
         return const GenericErrorScreen<CatsRouterBloc>(
-          navigationPoint: NavigationPoint.root,
+          routerActionHandlerType: RouterActionHandlerType.external,
         );
     }
   }

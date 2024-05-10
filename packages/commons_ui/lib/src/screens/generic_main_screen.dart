@@ -25,7 +25,7 @@ class GenericMainScreen<Router extends RouterBloc> extends StatelessWidget {
         onGenerateRoute: (settings) {
           final undefinedRoute = MaterialPageRoute(
             builder: (_) => GenericErrorScreen<Router>(
-              navigationPoint: NavigationPoint.root,
+              routerActionHandlerType: RouterActionHandlerType.external,
             ),
           );
 

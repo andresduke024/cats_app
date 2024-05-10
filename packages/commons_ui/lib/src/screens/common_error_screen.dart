@@ -3,16 +3,14 @@ import 'package:commons_ui/src/components/exit_button.dart';
 import 'package:commons_ui/src/utils/common_resources.dart';
 import 'package:flutter/material.dart';
 
-import '../utils/navigation_point.dart';
-
 class CommonErrorScreen extends StatelessWidget {
-  final NavigationPoint navigationPoint;
+  final RouterActionHandlerType routerActionHandlerType;
   final Function(RouterEvent) onBackButtonPressed;
   final Widget? child;
 
   const CommonErrorScreen({
     super.key,
-    required this.navigationPoint,
+    required this.routerActionHandlerType,
     required this.onBackButtonPressed,
     this.child,
   });
@@ -37,7 +35,7 @@ class CommonErrorScreen extends StatelessWidget {
                   fit: BoxFit.contain,
                 ),
                 ExitButton(
-                  navigationPoint: navigationPoint,
+                  routerActionHandlerType: routerActionHandlerType,
                   onTap: onBackButtonPressed,
                 ),
                 child ?? const SizedBox()

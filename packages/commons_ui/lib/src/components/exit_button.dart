@@ -1,14 +1,13 @@
 import 'package:commons/commons.dart';
-import 'package:commons_ui/src/utils/navigation_point.dart';
 import 'package:flutter/material.dart';
 
 class ExitButton extends StatelessWidget {
-  final NavigationPoint navigationPoint;
+  final RouterActionHandlerType routerActionHandlerType;
   final Function(RouterEvent) onTap;
 
   const ExitButton({
     super.key,
-    required this.navigationPoint,
+    required this.routerActionHandlerType,
     required this.onTap,
   });
 
@@ -16,7 +15,8 @@ class ExitButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        onTap(navigationPoint.popRequest);
+        final event = PopRequest(type: routerActionHandlerType);
+        onTap(event);
       },
       child: Container(
         decoration: BoxDecoration(

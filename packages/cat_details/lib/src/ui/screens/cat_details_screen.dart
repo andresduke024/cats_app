@@ -22,7 +22,7 @@ class CatDetailsScreen extends StatelessWidget {
     return BlocProvider(
       create: (context) => CatDetailsBloc(cat: cat),
       child: GenericScaffold<CatDetailsRouterBloc>(
-        origin: NavigationPoint.root,
+        routerActionHandlerTypeOnBack: RouterActionHandlerType.external,
         title: Constants.navigationHeaderName,
         body: BlocBuilder<CatDetailsBloc, CatDetailsState>(
           builder: _builder,

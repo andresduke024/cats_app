@@ -68,7 +68,7 @@ final class _RootScreenState<Router extends RouterBloc> extends State<RootScreen
       case RouterActionHandlerType.self:
         _onPop(context, status.route);
       case RouterActionHandlerType.external:
-        final event = AppRootPopRequest(route: status.route);
+        final event = PopRequest(route: status.route, type: RouterActionHandlerType.self);
         context.read<BaseRouterBloc>().add(event);
     }
   }

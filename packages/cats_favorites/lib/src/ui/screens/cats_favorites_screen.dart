@@ -19,7 +19,7 @@ class CatsFavoritesScreen extends StatelessWidget {
       child: BlocListener<CatsFavoritesBloc, CatsFavoritesState>(
         listener: _listener,
         child: GenericScaffold<CatFavoritesRouterBloc>(
-          origin: NavigationPoint.root,
+          routerActionHandlerTypeOnBack: RouterActionHandlerType.external,
           title: Constants.navigationHeaderName,
           body: BlocBuilder<CatsFavoritesBloc, CatsFavoritesState>(
             builder: _builder,
@@ -53,7 +53,7 @@ class CatsFavoritesScreen extends StatelessWidget {
         return _buildForSuccessStatus(context, data ?? []);
       case CatsFavoritesFailureState():
         return const GenericErrorScreen<CatFavoritesRouterBloc>(
-          navigationPoint: NavigationPoint.root,
+          routerActionHandlerType: RouterActionHandlerType.external,
         );
     }
   }

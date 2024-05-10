@@ -1,5 +1,6 @@
 import 'package:cat_details/cat_details.dart';
 import 'package:cats/cats.dart';
+import 'package:cats_app/ui/screens/base_screen.dart';
 import 'package:cats_app/ui/screens/splash_screen.dart';
 import 'package:cats_favorites/cats_favorites.dart';
 import 'package:commons/commons.dart';
@@ -14,7 +15,9 @@ final class BaseRouteGenerator implements ExtendedRouteGenerator {
 
   Route get _errorRoute {
     return MaterialPageRoute(
-      builder: (context) => const GenericErrorScreen<BaseRouterBloc>(navigationPoint: NavigationPoint.stack),
+      builder: (context) => const GenericErrorScreen<BaseRouterBloc>(
+        routerActionHandlerType: RouterActionHandlerType.self,
+      ),
     );
   }
 
@@ -77,12 +80,7 @@ final class BaseRouteGenerator implements ExtendedRouteGenerator {
     return [
       MaterialPageRoute(
         settings: RouteSettings(name: CommonRoutes.root),
-        builder: (context) => RootScreen<BaseRouterBloc>(
-          onInitState: (rootScreenContext) {
-            final event = PushRequest(route: CommonRoutes.splash.value);
-            rootScreenContext.read<BaseRouterBloc>().add(event);
-          },
-        ),
+        builder: (context) => const BaseScreen(),
       ),
     ];
   }

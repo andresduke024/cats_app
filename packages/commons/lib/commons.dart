@@ -23,14 +23,15 @@ export 'src/bloc/router/router_bloc.dart' show RouterBloc;
 
 export 'src/bloc/base_router/base_router_block.dart' show BaseRouterBloc;
 
-export 'src/bloc/router/router_events.dart'
-    show RouterEvent, PopRequested, PushRequest, AppRootPopRequest, SimplePopRequest;
+export 'src/bloc/router/router_action_handler_type.dart' show RouterActionHandlerType;
+
+export 'src/bloc/router/router_events.dart' show RouterEvent, PopRequest, PushRequest;
 
 export 'src/bloc/router/router_push_action_type.dart'
     show RouterPushActionType, RouterPushAndRemoveUntilActionType, RouterPushRegularActionType;
 
 export 'src/bloc/router/router_state.dart'
-    show RouterActionHandlerType, InitialRouterStatus, RouterState, RouterStatus, RouterPopStatus, RouterPushStatus;
+    show InitialRouterStatus, RouterState, RouterStatus, RouterPopStatus, RouterPushStatus;
 
 // Use cases
 export 'src/use_cases/favorites/get_favorite_cat_use_case.dart' show GetFavoritesCatUseCase;

@@ -1,9 +1,5 @@
+import 'router_action_handler_type.dart';
 import 'router_push_action_type.dart';
-
-enum RouterActionHandlerType {
-  external,
-  self,
-}
 
 sealed class RouterStatus {
   final RouterActionHandlerType type;

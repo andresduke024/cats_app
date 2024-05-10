@@ -5,14 +5,14 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../commons_ui.dart';
 
 final class GenericScaffold<Router extends RouterBloc> extends StatelessWidget {
-  final NavigationPoint origin;
+  final RouterActionHandlerType routerActionHandlerTypeOnBack;
   final String title;
   final Widget body;
   final VoidCallback? onBackPressed;
 
   const GenericScaffold({
     super.key,
-    this.origin = NavigationPoint.stack,
+    this.routerActionHandlerTypeOnBack = RouterActionHandlerType.self,
     required this.title,
     required this.body,
     this.onBackPressed,
@@ -38,7 +38,7 @@ final class GenericScaffold<Router extends RouterBloc> extends StatelessWidget {
           return;
         }
 
-        final event = origin == NavigationPoint.root ? const AppRootPopRequest() : const SimplePopRequest();
+        final event = PopRequest(type: routerActionHandlerTypeOnBack);
         context.read<Router>().add(event);
       },
     );

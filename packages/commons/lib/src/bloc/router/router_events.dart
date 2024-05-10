@@ -1,4 +1,4 @@
-import 'router_push_action_type.dart';
+import 'package:commons/commons.dart';
 
 sealed class RouterEvent {
   const RouterEvent();
@@ -16,16 +16,12 @@ final class PushRequest extends RouterEvent {
   });
 }
 
-sealed class PopRequested extends RouterEvent {
+final class PopRequest extends RouterEvent {
   final String? route;
+  final RouterActionHandlerType type;
 
-  const PopRequested({this.route});
-}
-
-final class SimplePopRequest extends PopRequested {
-  const SimplePopRequest({super.route});
-}
-
-final class AppRootPopRequest extends PopRequested {
-  const AppRootPopRequest({super.route});
+  const PopRequest({
+    this.route,
+    required this.type,
+  });
 }
