@@ -2,39 +2,75 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:commons/commons.dart';
 
-class RootScreen<T extends RouterBloc> extends StatelessWidget {
-  final Function(ExternalNavigationRequest) _onRootActionRequested;
-  final Widget _child;
+class RootScreen<Router extends RouterBloc> extends StatefulWidget {
+  final Widget? child;
+  final Function(BuildContext context)? onInitState;
 
   const RootScreen({
     super.key,
-    required Function(ExternalNavigationRequest) onRootActionRequested,
-    required child,
-  })  : _onRootActionRequested = onRootActionRequested,
-        _child = child;
+    this.child,
+    this.onInitState,
+  });
+
+  @override
+  State<StatefulWidget> createState() => _RootScreenState<Router>();
+}
+
+final class _RootScreenState<Router extends RouterBloc> extends State<RootScreen> {
+  @override
+  void initState() {
+    super.initState();
+
+    if (widget.onInitState != null) {
+      widget.onInitState!(context);
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
-    return BlocListener<T, RouterState>(
+    return BlocListener<Router, RouterState>(
       bloc: context.read(),
       listener: (listenerContext, state) {
         switch (state.status) {
           case InitialRouterStatus():
             break;
-          case RouterSimplePushStatus(route: final route, arguments: final arguments):
-            Navigator.pushNamed(context, route, arguments: arguments);
-          case RouterSimplePopStatus(route: final route):
-            _onPop(context, route);
-          case RouterAppPushStatus(route: final route, arguments: final arguments):
-            final request = ExternalPushNavigationRequest(route: route, arguments: arguments);
-            _onRootActionRequested(request);
-          case RouterAppPopStatus(route: final route):
-            final request = ExternalPopNavigationRequest(route: route);
-            _onRootActionRequested(request);
+          case RouterPushStatus():
+            _onPushState(context, state.status as RouterPushStatus);
+          case RouterPopStatus():
+            _onPopState(context, state.status as RouterPopStatus);
         }
       },
-      child: _child,
+      child: widget.child ?? const SizedBox(),
     );
+  }
+
+  void _onPushState(BuildContext context, RouterPushStatus status) {
+    switch (status.type) {
+      case RouterActionHandlerType.self:
+        _onPush(context, status);
+      case RouterActionHandlerType.external:
+        final event = PushRequest(route: status.route, arguments: status.arguments);
+        context.read<BaseRouterBloc>().add(event);
+    }
+  }
+
+  void _onPush(BuildContext context, RouterPushStatus status) {
+    switch (status.actionType) {
+      case RouterPushAndRemoveUntilActionType(removeUntilRoute: final removeUntilRoute):
+        Navigator.pushNamedAndRemoveUntil(context, status.route, (route) => route.settings.name == removeUntilRoute);
+      case RouterPushRegularActionType():
+        Navigator.pushNamed(context, status.route, arguments: status.arguments);
+    }
+  }
+
+  void _onPopState(BuildContext context, RouterPopStatus status) {
+    switch (status.type) {
+      case RouterActionHandlerType.self:
+        _onPop(context, status.route);
+      case RouterActionHandlerType.external:
+        final event = AppRootPopRequest(route: status.route);
+        context.read<BaseRouterBloc>().add(event);
+    }
   }
 
   void _onPop(BuildContext context, String route) {

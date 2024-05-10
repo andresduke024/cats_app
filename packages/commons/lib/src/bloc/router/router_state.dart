@@ -1,40 +1,43 @@
+import 'router_push_action_type.dart';
+
+enum RouterActionHandlerType {
+  external,
+  self,
+}
+
 sealed class RouterStatus {
+  final RouterActionHandlerType type;
   final String route;
   final Object? arguments;
 
-  RouterStatus({required this.route, this.arguments});
+  const RouterStatus({
+    required this.type,
+    required this.route,
+    this.arguments,
+  });
 }
 
 final class InitialRouterStatus extends RouterStatus {
-  InitialRouterStatus() : super(route: "");
+  const InitialRouterStatus() : super(route: "", type: RouterActionHandlerType.external);
 }
 
-// Push status
+final class RouterPushStatus extends RouterStatus {
+  final RouterPushActionType actionType;
 
-sealed class RouterPushStatus extends RouterStatus {
-  RouterPushStatus({required super.route, super.arguments});
+  const RouterPushStatus({
+    required super.type,
+    required super.route,
+    super.arguments,
+    required this.actionType,
+  });
 }
 
-final class RouterSimplePushStatus extends RouterPushStatus {
-  RouterSimplePushStatus({required super.route, super.arguments});
-}
-
-final class RouterAppPushStatus extends RouterPushStatus {
-  RouterAppPushStatus({required super.route, super.arguments});
-}
-
-// Pop status
-
-sealed class RouterPopStatus extends RouterStatus {
-  RouterPopStatus({required super.route, super.arguments});
-}
-
-final class RouterSimplePopStatus extends RouterPopStatus {
-  RouterSimplePopStatus({required super.route});
-}
-
-final class RouterAppPopStatus extends RouterPopStatus {
-  RouterAppPopStatus({required super.route});
+final class RouterPopStatus extends RouterStatus {
+  const RouterPopStatus({
+    required super.type,
+    required super.route,
+    super.arguments,
+  });
 }
 
 // State
@@ -44,7 +47,7 @@ final class RouterState {
 
   RouterState._({required this.status});
 
-  RouterState.initial() : this._(status: InitialRouterStatus());
+  RouterState.initial() : this._(status: const InitialRouterStatus());
 
   RouterState.push({
     required RouterPushStatus status,

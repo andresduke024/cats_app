@@ -4,36 +4,33 @@ library commons;
 export 'src/base/base_package_builder.dart' show BasePackageBuilder;
 
 export 'src/base/environment/environment_values_provider.dart' show EnvironmentValuesProvider;
-export 'src/base/environment/impl/environment_values_provider_impl.dart' show EnvironmentValuesProviderImpl;
-export 'src/base/environment/environment_values.dart' show EnvironmentValues;
-export 'src/base/environment/environment_keys.dart' show EnvironmentKeys;
 
-// Models
-export 'src/models/navigation/external_navigation_request.dart'
-    show ExternalNavigationRequest, ExternalPopNavigationRequest, ExternalPushNavigationRequest;
+export 'src/base/environment/impl/environment_values_provider_impl.dart' show EnvironmentValuesProviderImpl;
+
+export 'src/base/environment/environment_values.dart' show EnvironmentValues;
+
+export 'src/base/environment/environment_keys.dart' show EnvironmentKeys;
 
 export 'src/models/cats.dart' show Cat;
 
 // Repository
 export 'src/repository/base_repository.dart' show BaseRepository;
+
 export 'src/repository/mappers/repository_mapper.dart' show ResponseMapper, RequestMapper, BaseMapper;
 
 // BLoC
 export 'src/bloc/router/router_bloc.dart' show RouterBloc;
+
+export 'src/bloc/base_router/base_router_block.dart' show BaseRouterBloc;
+
 export 'src/bloc/router/router_events.dart'
     show RouterEvent, PopRequested, PushRequest, AppRootPopRequest, SimplePopRequest;
 
+export 'src/bloc/router/router_push_action_type.dart'
+    show RouterPushActionType, RouterPushAndRemoveUntilActionType, RouterPushRegularActionType;
+
 export 'src/bloc/router/router_state.dart'
-    show
-        InitialRouterStatus,
-        RouterState,
-        RouterStatus,
-        RouterPopStatus,
-        RouterSimplePopStatus,
-        RouterAppPopStatus,
-        RouterAppPushStatus,
-        RouterSimplePushStatus,
-        RouterPushStatus;
+    show RouterActionHandlerType, InitialRouterStatus, RouterState, RouterStatus, RouterPopStatus, RouterPushStatus;
 
 // Use cases
 export 'src/use_cases/favorites/get_favorite_cat_use_case.dart' show GetFavoritesCatUseCase;
@@ -47,4 +44,4 @@ export './src/utils/common_utils.dart' show CommonUtils;
 
 export './src/errors/environment_exception.dart' show EnvironmentException;
 
-export './src/utils/route_generator.dart' show RouteGenerator;
+export './src/utils/route_generator.dart' show RouteGenerator, ExtendedRouteGenerator;

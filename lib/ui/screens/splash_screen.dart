@@ -6,8 +6,6 @@ import 'package:commons_ui/commons_ui.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../bloc/router/base_router_block.dart';
-
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
 
@@ -30,18 +28,20 @@ class _SplashScreenState extends State<SplashScreen> {
   void _listener(BuildContext context, SplashState state) {
     if (state.status != SplashStatus.success) return;
 
-    final event = PushRequest(route: CommonRoutes.home.value);
+    final action = RouterPushAndRemoveUntilActionType(removeUntilRoute: CommonRoutes.root);
+    final event = PushRequest(route: CommonRoutes.home.value, actionType: action);
     context.read<BaseRouterBloc>().add(event);
   }
 
   Widget _buildBody(BuildContext context) {
     return Center(
       child: Container(
-          decoration: BoxDecoration(color: Theme.of(context).primaryColor),
-          child: PaddingImage(
-            assetName: BaseResources.splash.value,
-            padding: const EdgeInsets.all(50),
-          )),
+        decoration: BoxDecoration(color: Theme.of(context).primaryColor),
+        child: PaddingImage(
+          assetName: BaseResources.splash.value,
+          padding: const EdgeInsets.all(50),
+        ),
+      ),
     );
   }
 }

@@ -1,3 +1,5 @@
+import 'router_push_action_type.dart';
+
 sealed class RouterEvent {
   const RouterEvent();
 }
@@ -5,8 +7,13 @@ sealed class RouterEvent {
 final class PushRequest extends RouterEvent {
   final String route;
   final Object? arguments;
+  final RouterPushActionType actionType;
 
-  PushRequest({required this.route, this.arguments});
+  const PushRequest({
+    required this.route,
+    this.arguments,
+    this.actionType = const RouterPushRegularActionType(),
+  });
 }
 
 sealed class PopRequested extends RouterEvent {

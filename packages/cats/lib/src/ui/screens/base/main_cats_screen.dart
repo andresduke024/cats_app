@@ -7,9 +7,8 @@ import 'package:cats/src/ui/screens/cats_list_screen.dart';
 import 'package:commons_ui/commons_ui.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class MainCatsScreen extends MainPackageScreen {
-  const MainCatsScreen(
-    super.onRootActionRequested, {
+class MainCatsScreen extends StatelessWidget {
+  const MainCatsScreen({
     super.key,
   });
 
@@ -21,7 +20,6 @@ class MainCatsScreen extends MainPackageScreen {
         BlocProvider(create: (_) => CatsListsBloc()),
       ],
       child: GenericMainScreen<CatsRouterBloc>(
-        onRootActionRequested: onRootActionRequested,
         initialScreen: const CatsListScreen(),
         routeGenerator: CatsRouteGenerator.name,
       ),

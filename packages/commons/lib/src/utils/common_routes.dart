@@ -1,5 +1,6 @@
 enum CommonRoutes {
   error(value: ""),
+  splash(value: "splash"),
   home(value: "home"),
   catsPackage(value: "cats_package"),
   favoriteCatsPackages(value: "favorite_cats_package"),
@@ -7,6 +8,8 @@ enum CommonRoutes {
   adoptCatsPackage(value: "adopt_cats_package");
 
   final String value;
+
+  static String root = "/";
 
   const CommonRoutes({required this.value});
 

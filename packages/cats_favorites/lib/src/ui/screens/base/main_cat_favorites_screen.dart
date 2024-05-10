@@ -7,9 +7,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../bloc/router/cat_favorites_router_bloc.dart';
 
-class MainCatFavoritesScreen extends MainPackageScreen {
-  const MainCatFavoritesScreen(
-    super.onRootActionRequested, {
+class MainCatFavoritesScreen extends StatelessWidget {
+  const MainCatFavoritesScreen({
     super.key,
   });
 
@@ -21,7 +20,6 @@ class MainCatFavoritesScreen extends MainPackageScreen {
         BlocProvider(create: (_) => CatsFavoritesBloc()),
       ],
       child: GenericMainScreen<CatFavoritesRouterBloc>(
-        onRootActionRequested: onRootActionRequested,
         initialScreen: const CatsFavoritesScreen(),
         routeGenerator: CatFavoritesRouteGenerator.name,
       ),

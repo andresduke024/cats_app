@@ -5,15 +5,12 @@ import 'package:get_it/get_it.dart';
 import '../../commons_ui.dart';
 
 class GenericMainScreen<Router extends RouterBloc> extends StatelessWidget {
-  final Function(ExternalNavigationRequest) onRootActionRequested;
-
   final Widget initialScreen;
 
   final RouteGenerator routeGenerator;
 
   GenericMainScreen({
     super.key,
-    required this.onRootActionRequested,
     required this.initialScreen,
     required String routeGenerator,
   }) : routeGenerator = GetIt.I.get(instanceName: routeGenerator);
@@ -23,7 +20,6 @@ class GenericMainScreen<Router extends RouterBloc> extends StatelessWidget {
     return Scaffold(
       body: NestedNavigator(
         initialScreen: RootScreen<Router>(
-          onRootActionRequested: onRootActionRequested,
           child: initialScreen,
         ),
         onGenerateRoute: (settings) {

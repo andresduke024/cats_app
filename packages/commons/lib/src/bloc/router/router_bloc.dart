@@ -12,17 +12,14 @@ class RouterBloc extends Bloc<RouterEvent, RouterState> {
   }
 
   void onPushRequested(PushRequest event, Emitter<RouterState> emit) {
-    RouterPushStatus status = RouterAppPushStatus(
+    final type = routes.contains(event.route) ? RouterActionHandlerType.self : RouterActionHandlerType.external;
+
+    RouterPushStatus status = RouterPushStatus(
+      type: type,
       route: event.route,
       arguments: event.arguments,
+      actionType: event.actionType,
     );
-
-    if (routes.contains(event.route)) {
-      status = RouterSimplePushStatus(
-        route: event.route,
-        arguments: event.arguments,
-      );
-    }
 
     emit(RouterState.push(status: status));
   }
@@ -34,9 +31,9 @@ class RouterBloc extends Bloc<RouterEvent, RouterState> {
 
     switch (event) {
       case SimplePopRequest():
-        status = RouterSimplePopStatus(route: route);
+        status = RouterPopStatus(type: RouterActionHandlerType.self, route: route);
       case AppRootPopRequest():
-        status = RouterAppPopStatus(route: route);
+        status = RouterPopStatus(type: RouterActionHandlerType.external, route: route);
     }
 
     emit(RouterState.pop(status: status));

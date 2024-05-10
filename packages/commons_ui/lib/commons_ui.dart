@@ -28,8 +28,6 @@ export './src/screens/common_error_screen.dart' show CommonErrorScreen;
 
 export './src/screens/generic_error_screen.dart' show GenericErrorScreen;
 
-export './src/screens/main_package_screen.dart' show MainPackageScreen;
-
 export './src/screens/generic_main_screen.dart' show GenericMainScreen;
 
 // Utils
