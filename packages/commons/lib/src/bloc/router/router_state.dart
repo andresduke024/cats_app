@@ -1,3 +1,5 @@
+import 'package:flutter/widgets.dart';
+
 import 'router_action_handler_type.dart';
 import 'router_push_action_type.dart';
 
@@ -18,6 +20,7 @@ final class InitialRouterStatus extends RouterStatus {
 }
 
 final class RouterPushStatus extends RouterStatus {
+  final VoidCallback? onGoBack;
   final RouterPushActionType actionType;
 
   const RouterPushStatus({
@@ -25,6 +28,7 @@ final class RouterPushStatus extends RouterStatus {
     required super.route,
     super.arguments,
     required this.actionType,
+    this.onGoBack,
   });
 }
 

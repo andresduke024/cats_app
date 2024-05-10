@@ -14,12 +14,7 @@ class BaseRouterBloc extends RouterBloc {
 
   @override
   void onPushRequested(PushRequest event, Emitter<RouterState> emit) {
-    RouterPushStatus status = RouterPushStatus(
-      type: RouterActionHandlerType.self,
-      route: event.route,
-      arguments: event.arguments,
-      actionType: event.actionType,
-    );
+    final status = mapPushEventToState(event, type: RouterActionHandlerType.self);
 
     emit(RouterState.push(status: status));
   }

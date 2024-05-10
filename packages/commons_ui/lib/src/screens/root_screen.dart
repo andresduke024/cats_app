@@ -30,12 +30,12 @@ final class _RootScreenState<Router extends RouterBloc> extends State<RootScreen
   Widget build(BuildContext context) {
     return BlocListener<Router, RouterState>(
       bloc: context.read(),
-      listener: (listenerContext, state) {
+      listener: (listenerContext, state) async {
         switch (state.status) {
           case InitialRouterStatus():
             break;
           case RouterPushStatus():
-            _onPushState(context, state.status as RouterPushStatus);
+            await _onPushState(context, state.status as RouterPushStatus);
           case RouterPopStatus():
             _onPopState(context, state.status as RouterPopStatus);
         }
@@ -44,22 +44,29 @@ final class _RootScreenState<Router extends RouterBloc> extends State<RootScreen
     );
   }
 
-  void _onPushState(BuildContext context, RouterPushStatus status) {
+  Future _onPushState(BuildContext context, RouterPushStatus status) async {
     switch (status.type) {
       case RouterActionHandlerType.self:
-        _onPush(context, status);
+        await _onPush(context, status);
       case RouterActionHandlerType.external:
-        final event = PushRequest(route: status.route, arguments: status.arguments);
+        final event = PushRequest(route: status.route, arguments: status.arguments, onGoBack: status.onGoBack);
         context.read<BaseRouterBloc>().add(event);
     }
   }
 
-  void _onPush(BuildContext context, RouterPushStatus status) {
+  Future _onPush(BuildContext context, RouterPushStatus status) async {
+    onGoBack(Object? value) {
+      if (status.onGoBack == null) return;
+
+      status.onGoBack!();
+    }
+
     switch (status.actionType) {
       case RouterPushAndRemoveUntilActionType(removeUntilRoute: final removeUntilRoute):
-        Navigator.pushNamedAndRemoveUntil(context, status.route, (route) => route.settings.name == removeUntilRoute);
+        await Navigator.pushNamedAndRemoveUntil(context, status.route, ModalRoute.withName(removeUntilRoute))
+            .then(onGoBack);
       case RouterPushRegularActionType():
-        Navigator.pushNamed(context, status.route, arguments: status.arguments);
+        await Navigator.pushNamed(context, status.route, arguments: status.arguments).then(onGoBack);
     }
   }
 
@@ -79,6 +86,6 @@ final class _RootScreenState<Router extends RouterBloc> extends State<RootScreen
       return;
     }
 
-    Navigator.popUntil(context, (navigator) => navigator.settings.name == route);
+    Navigator.popUntil(context, ModalRoute.withName(route));
   }
 }

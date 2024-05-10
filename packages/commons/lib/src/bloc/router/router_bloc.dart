@@ -15,12 +15,7 @@ class RouterBloc extends Bloc<RouterEvent, RouterState> {
   void onPushRequested(PushRequest event, Emitter<RouterState> emit) {
     final type = routes.contains(event.route) ? RouterActionHandlerType.self : RouterActionHandlerType.external;
 
-    RouterPushStatus status = RouterPushStatus(
-      type: type,
-      route: event.route,
-      arguments: event.arguments,
-      actionType: event.actionType,
-    );
+    final status = mapPushEventToState(event, type: type);
 
     emit(RouterState.push(status: status));
   }
@@ -29,5 +24,18 @@ class RouterBloc extends Bloc<RouterEvent, RouterState> {
     final status = RouterPopStatus(type: event.type, route: event.route ?? "");
 
     emit(RouterState.pop(status: status));
+  }
+
+  RouterPushStatus mapPushEventToState(
+    PushRequest event, {
+    required RouterActionHandlerType type,
+  }) {
+    return RouterPushStatus(
+      type: type,
+      route: event.route,
+      arguments: event.arguments,
+      actionType: event.actionType,
+      onGoBack: event.onGoBack,
+    );
   }
 }

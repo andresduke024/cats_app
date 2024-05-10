@@ -1,3 +1,4 @@
+import 'package:cats_favorites/src/bloc/cats_favorites/cats_favorites_events.dart';
 import 'package:cats_favorites/src/bloc/cats_favorites/cats_favorites_states.dart';
 import 'package:cats_favorites/src/bloc/router/cat_favorites_router_bloc.dart';
 import 'package:cats_favorites/src/ui/components/favorite_card.dart';
@@ -35,7 +36,12 @@ class CatsFavoritesScreen extends StatelessWidget {
       return;
     }
 
-    final event = PushRequest(route: state.route, arguments: state.arguments);
+    onGoBack() {
+      const event = LoadCatsFavorites();
+      context.read<CatsFavoritesBloc>().add(event);
+    }
+
+    final event = PushRequest(route: state.route, arguments: state.arguments, onGoBack: onGoBack);
     context.read<CatFavoritesRouterBloc>().add(event);
   }
 
