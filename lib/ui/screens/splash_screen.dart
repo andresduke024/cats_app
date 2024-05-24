@@ -5,6 +5,7 @@ import 'package:cats_app/bloc/splash/splash_states.dart';
 import 'package:commons_ui/commons_ui.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:modular_router/modular_router.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});

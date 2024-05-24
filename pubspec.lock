@@ -342,6 +342,15 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.12.0"
+  modular_router:
+    dependency: "direct main"
+    description:
+      path: "."
+      ref: main
+      resolved-ref: "9a2eb1f793bb6128ca1a243f1aed3469ee749f89"
+      url: "https://github.com/andresduke024/modular_router.git"
+    source: git
+    version: "0.0.1"
   mustache_template:
     dependency: transitive
     description:
@@ -620,5 +629,5 @@ packages:
     source: hosted
     version: "2.2.0"
 sdks:
-  dart: ">=3.3.3 <4.0.0"
+  dart: ">=3.4.0 <4.0.0"
   flutter: ">=3.18.0-18.0.pre.54"

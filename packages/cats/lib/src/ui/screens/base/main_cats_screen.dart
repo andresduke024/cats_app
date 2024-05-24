@@ -1,11 +1,12 @@
 import 'package:cats/src/bloc/cats/cats_list_bloc.dart';
 import 'package:cats/src/bloc/router/cats_route_generator.dart';
 import 'package:cats/src/bloc/router/cats_router_bloc.dart';
+import 'package:commons_ui/commons_ui.dart';
 import 'package:flutter/material.dart';
 import 'package:cats/src/ui/screens/cats_list_screen.dart';
 
-import 'package:commons_ui/commons_ui.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:modular_router/modular_router.dart';
 
 class MainCatsScreen extends StatelessWidget {
   const MainCatsScreen({
@@ -21,6 +22,9 @@ class MainCatsScreen extends StatelessWidget {
       ],
       child: GenericMainScreen<CatsRouterBloc>(
         initialScreen: const CatsListScreen(),
+        routeNotFoundScreen: const GenericErrorScreen<BaseRouterBloc>(
+          routerActionHandlerType: RouterActionHandlerType.self,
+        ),
         routeGenerator: CatsRouteGenerator.name,
       ),
     );

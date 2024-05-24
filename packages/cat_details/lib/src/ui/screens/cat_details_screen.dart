@@ -1,4 +1,5 @@
 import 'package:cat_details/src/bloc/router/cat_details_router_bloc.dart';
+import 'package:modular_router/modular_router.dart';
 
 import '../../bloc/cat_details/cat_details_bloc.dart';
 import '../../bloc/cat_details/cat_details_event.dart';

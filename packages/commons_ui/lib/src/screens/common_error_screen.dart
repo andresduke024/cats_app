@@ -1,8 +1,8 @@
-import 'package:commons/commons.dart';
 import 'package:commons_ui/src/components/exit_button.dart';
 import 'package:commons_ui/src/components/generic_asset_image.dart';
 import 'package:commons_ui/src/utils/common_resources.dart';
 import 'package:flutter/material.dart';
+import 'package:modular_router/modular_router.dart';
 
 class CommonErrorScreen extends StatelessWidget {
   final RouterActionHandlerType routerActionHandlerType;

@@ -1,3 +1,5 @@
+import 'package:modular_router/modular_router.dart';
+
 import '../bloc/router/cats_route_generator.dart';
 import '../models/mappers/cat_mapper.dart';
 import '../models/responses/cat_breed_response.dart';

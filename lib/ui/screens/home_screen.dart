@@ -5,7 +5,7 @@ import 'package:cats_app/ui/components/module_entry_button.dart';
 import 'package:cats_app/utils/modules.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:commons/commons.dart';
+import 'package:modular_router/modular_router.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});

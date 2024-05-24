@@ -8,6 +8,7 @@ import 'package:cats_favorites/src/use_cases/impl/get_favorite_cat_use_case_impl
 import 'package:cats_favorites/src/use_cases/impl/get_favorites_cat_list_use_case_impl.dart';
 import 'package:commons/commons.dart';
 import 'package:get_it/get_it.dart';
+import 'package:modular_router/modular_router.dart';
 
 class CatsFavoritesPackageBuilder implements BasePackageBuilder {
   @override

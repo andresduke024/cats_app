@@ -24,6 +24,11 @@ dependencies:
   commons_ui: 
     path: ../commons_ui
 
+  modular_router:
+   git: 
+    url: https://github.com/andresduke024/modular_router.git
+    ref: main
+
 dev_dependencies:
   flutter_test:
     sdk: flutter

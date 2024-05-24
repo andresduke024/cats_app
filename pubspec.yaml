@@ -56,6 +56,11 @@ dependencies:
   cats_favorites:
     path: packages/cats_favorites
 
+  modular_router:
+   git: 
+    url: https://github.com/andresduke024/modular_router.git
+    ref: main
+
 dev_dependencies:
   flutter_test:
     sdk: flutter

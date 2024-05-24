@@ -4,6 +4,7 @@ import 'package:cats_favorites/src/ui/screens/cats_favorites_screen.dart';
 import 'package:commons_ui/commons_ui.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:modular_router/modular_router.dart';
 
 import '../../../bloc/router/cat_favorites_router_bloc.dart';
 
@@ -21,6 +22,9 @@ class MainCatFavoritesScreen extends StatelessWidget {
       ],
       child: GenericMainScreen<CatFavoritesRouterBloc>(
         initialScreen: const CatsFavoritesScreen(),
+        routeNotFoundScreen: const GenericErrorScreen<BaseRouterBloc>(
+          routerActionHandlerType: RouterActionHandlerType.self,
+        ),
         routeGenerator: CatFavoritesRouteGenerator.name,
       ),
     );

@@ -3,6 +3,7 @@ import 'package:commons/commons.dart';
 import 'package:commons_ui/commons_ui.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:modular_router/modular_router.dart';
 
 import '../../../bloc/router/cat_details_route_generator.dart';
 import '../../../bloc/router/cat_details_router_bloc.dart';
@@ -23,6 +24,9 @@ class MainCatDetailsScreen extends StatelessWidget {
       ],
       child: GenericMainScreen<CatDetailsRouterBloc>(
         initialScreen: CatDetailsScreen(cat: data),
+        routeNotFoundScreen: const GenericErrorScreen<BaseRouterBloc>(
+          routerActionHandlerType: RouterActionHandlerType.self,
+        ),
         routeGenerator: CatDetailsRouteGenerator.name,
       ),
     );

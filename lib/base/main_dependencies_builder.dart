@@ -2,12 +2,14 @@ import 'dart:convert';
 
 import 'package:cat_details/cat_details.dart';
 import 'package:cats/cats.dart';
+import 'package:cats_app/base/main_global_config.dart';
 import 'package:cats_favorites/cats_favorites.dart';
 
 import 'package:commons/commons.dart';
 import 'package:flutter/services.dart';
 import 'package:get_it/get_it.dart';
 import 'package:hive_flutter/hive_flutter.dart';
+import 'package:modular_router/modular_router.dart';
 
 class MainDependenciesBuilder {
   MainDependenciesBuilder();
@@ -21,6 +23,8 @@ class MainDependenciesBuilder {
 
     EnvironmentValues environment = EnvironmentValues(data: configData);
     injector.registerSingleton<EnvironmentValuesProvider>(EnvironmentValuesProviderImpl(environment: environment));
+
+    ModularRouterGlobalConfigProvider().set(MainGlobalConfig());
 
     await Hive.initFlutter();
 

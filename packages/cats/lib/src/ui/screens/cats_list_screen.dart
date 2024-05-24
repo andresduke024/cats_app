@@ -6,6 +6,7 @@ import 'package:commons/commons.dart';
 import 'package:commons_ui/commons_ui.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:modular_router/modular_router.dart';
 
 import '../../utils/constants.dart';
 

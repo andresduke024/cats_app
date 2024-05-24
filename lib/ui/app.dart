@@ -1,8 +1,8 @@
 import 'package:cats_app/bloc/home/home_bloc.dart';
 import 'package:cats_app/bloc/router/base_route_generator.dart';
-import 'package:commons/commons.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:modular_router/modular_router.dart';
 
 import '../bloc/splash/splash_bloc.dart';
 

@@ -1,4 +1,0 @@
-enum RouterActionHandlerType {
-  external,
-  self,
-}
